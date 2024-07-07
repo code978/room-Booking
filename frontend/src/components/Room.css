@@ -1,0 +1,58 @@
+.room {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calendar {
+    margin-top: 16px;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+  
+  .calendar-body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .calendar-day {
+    flex: 1;
+    min-width: 120px;
+    border: 1px solid #ddd;
+    margin: 4px;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .date {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .timeslot {
+    text-align: center;
+    padding: 4px;
+    margin: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .timeslot.available {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .timeslot.booked {
+    background-color: #f8d7da;
+    color: #721c24;
+    cursor: not-allowed;
+  }
+  

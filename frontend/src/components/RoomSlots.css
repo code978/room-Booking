@@ -1,0 +1,132 @@
+.room-list {
+  padding: 20px;
+  background-color: #242424;
+  color: rgba(255, 255, 255, 0.87);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.room-list p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.calendar {
+  margin-top: 20px;
+}
+
+.calendar-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.calendar-header h2 {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.calendar-weekdays {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.calendar-weekday {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.calendar-days {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calendar-day {
+  width: calc(100% / 7);
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.calendar-day.empty {
+  color: black;
+  background-color: #f0f0f0;
+}
+
+.calendar-day.available {
+  color: black;
+  background-color: #e0ffe0;
+  cursor: pointer;
+}
+
+.calendar-day.booked {
+  /* background-color: green; */
+  color: black;
+  cursor: pointer
+}
+
+.calendar-day:hover.available {
+    background-color: green;
+    cursor: pointer
+}
+
+a {
+  display: inline-block;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.87);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.time-slots {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.time-slot {
+  width: 80px;
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.time-slot.available {
+  background-color: #e0ffe0;
+  color: #4F701B;
+}
+
+.time-slot.booked {
+  background-color: red;
+  color: rgba(255, 255, 255, 0.87);
+  cursor: not-allowed;
+}
+
+.time-slot:hover.available {
+  background-color: #c0ffc0;
+}
+
+.calendar-day.current-select{
+    background-color: rgb(0, 127, 0);
+    /* cursor: pointer; */
+    border: 2px dotted pink;
+}
+
+.calendar-day.current-select:hover{
+    background-color: rgb(0, 127, 75);
+    opacity: 0.8;
+    /* cursor: pointer; */
+    border: 2px dotted pink;
+}
