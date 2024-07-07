@@ -7,19 +7,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: 'roomslots/:id',
-    element: <RoomSlots />
-  }
-]);
-
+import router from './helpers/router.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
