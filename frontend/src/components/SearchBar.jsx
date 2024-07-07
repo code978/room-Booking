@@ -14,7 +14,8 @@ const SearchBar = ({ onSearch }) => {
         type="text"
         value={term}
         onChange={(e) => setTerm(e.target.value)}
-        placeholder="Search rooms..."
+        placeholder="Search rooms by name or tag"
+        style={{ width: '270px', padding: '8px', borderRadius: '2.5px', border: '1px solid #ccc' }}
       />
       <button type="submit">Search</button>
     </form>

@@ -1,6 +1,7 @@
 const Room = require('../models/room');
 const jwt = require('jsonwebtoken');
 const { checkValidTimes } = require('../utils/checkValidTimes');
+const { searchQuery } = require('../query');
 
 exports.setToken = (req, res, next) => {
   const token = jwt.sign({}, process.env.SECRET_KEY);
@@ -20,28 +21,7 @@ exports.searchRooms = async (req, res) => {
   try {
     let query = {};
 
-    if (name || date || time) {
-      query = {};
-
-      if (name) {
-        query.name = { $regex: name, $options: 'i' }; // case-insensitive search
-      }
-
-      if (date && time) {
-        query.timeSlots = {
-          $elemMatch: {
-            date: date,
-            'slots.time': time,
-          },
-        };
-      } else if (date) {
-        query.timeSlots = {
-          $elemMatch: {
-            date: date,
-          },
-        };
-      }
-    }
+    query = searchQuery(name, date, time);
 
     const rooms = await Room.find(query);
     res.status(200).json({ status: true, rooms });
