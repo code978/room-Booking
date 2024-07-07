@@ -43,6 +43,7 @@ const RoomSlots = () => {
         <div className="room-list">
             <p>Room ID: {id}</p>
             <p>Room Name: {roomDetails?.name}</p>
+            <p> Room Tag: {roomDetails?.tag||"Sorry, there is no room tag"}</p>
             <Calendar
                 roomDetails={roomDetails}
                 currentSelectedDay={currentSelectedDay}
