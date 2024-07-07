@@ -1,11 +1,11 @@
 import React from 'react';
 import Room from './Room';
 
-const RoomList = ({ rooms, handleBook }) => {
+const RoomList = ({ rooms}) => {
   return (
     <div className="room-list">
       {rooms.map((room) => (
-        <Room key={room._id} room={room} handleBook={handleBook} />
+        <Room key={room._id} room={room} />
       ))}
     </div>
   );

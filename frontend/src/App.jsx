@@ -31,15 +31,6 @@ const App = () => {
     setSearchTerm(term);
   };
 
-  const handleBook = async (roomId, date, time) => {
-    try {
-      await apiService.bookRoom(roomId, date, time);
-      fetchRooms(); // Refresh room list after booking
-    } catch (error) {
-      console.error("Failed to book room:", error);
-    }
-  };
-
   const filteredRooms = rooms.filter(room =>
     room.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -52,7 +43,7 @@ const App = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <RoomList rooms={filteredRooms} handleBook={handleBook} />
+        <RoomList rooms={filteredRooms} />
       )}
 
     </div>

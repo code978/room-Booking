@@ -3,7 +3,7 @@ import 'react-calendar/dist/Calendar.css';
 import './Room.css'; // Add this line if you want to style the component separately
 import { useNavigate } from 'react-router-dom';
 
-const Room = ({ room, handleBook }) => {
+const Room = ({ room }) => {
 
   const navigate = useNavigate();
 

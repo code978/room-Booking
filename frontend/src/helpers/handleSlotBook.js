@@ -17,7 +17,7 @@ const handleSlotBook = async (e, slot, id, selectedDate, setTsLoad) => {
             if (repsonse?.status) {
                 alert(repsonse?.message || 'time slot booked sucessfully!')
                 setTimeout(() => {
-                    // window.location.reload();
+                    window.location.reload();
                 }, [1000])
             }
 
