@@ -24,6 +24,29 @@ exports.searchRooms = async (req, res) => {
     query = searchQuery(name, date, time);
 
     const rooms = await Room.find(query);
+
+    if (!rooms || rooms.length == 0) {
+      return res.status(404).json({ status: true, message: 'No rooms found' });
+    }
+
+    if (time) {
+      const filteredRooms = rooms.filter(room => {
+        for (let i = 0; i < 30; i++) {
+          const date = new Date(new Date().setDate(new Date().getDate() + i)).toISOString().split('T')[0];
+          const slot = room.timeSlots.find(ts => {
+            const slot = ts.slots.find(slot => slot.time === time && !slot.booked && ts.date === date);
+            return slot === undefined;
+          });
+          if (slot === undefined) {
+            return true;
+          }
+        }
+        return false;
+      });
+
+      return res.status(200).json({ status: true, rooms: filteredRooms });
+    }
+
     res.status(200).json({ status: true, rooms });
   } catch (err) {
     res.status(500).json({ message: err.message });
