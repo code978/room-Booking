@@ -162,3 +162,16 @@ exports.getRoomDetails = async (req, res) => {
     res.status(500).json({ message: 'Error while fetching room', error: error.message });
   }
 }
+
+
+exports.getSlots = async (req,res,next) =>{
+
+    try {
+      const rooms = await Room.find({});
+      const timeslots = rooms.map(room => room.timeSlots);
+      res.status(200).json({ status: true, timeslots });
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching timeslots', error: error.message });
+    }
+
+}

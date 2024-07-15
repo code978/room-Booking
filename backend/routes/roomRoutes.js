@@ -21,5 +21,6 @@ router.get('/rooms/all', protect, roomController.getAllRooms);
 
 router.get('/room/:id',roomController.getRoomDetails)
 
+router.get('/room',roomController.getSlots);
 
 module.exports = router;

@@ -47,10 +47,25 @@ const getRoomDetails = async (roomId) => {
   return response?.data?.room;
 }
 
+
+const getSlots = async ()=>{
+
+  if (!localStorage.getItem('token')) await getToken();
+  const response = await axios.get(`${API_URL}/slots`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+  return response?.data?.timeslots
+}
+
 export default {
   getRooms,
   bookRoom,
-  getRoomDetails
+  getRoomDetails,
+  getSlots
 };
+
+
 
 

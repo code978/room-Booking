@@ -31,9 +31,24 @@ const App = () => {
     setSearchTerm(term);
   };
 
-  const filteredRooms = rooms.filter(room =>
-    room.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredRooms = rooms.filter(room => {
+    if (searchTerm.includes('-')) {
+            // This logic checks if a room is available at the specified time range, on the current date.
+      // It splits the search term by '-' and takes the first part as the start time and the second part as the end time.
+      // It then checks if there is no time slot on the current date that is booked in the specified time range.
+      const [startTime, endTime] = searchTerm.split('-');
+      if(endTime<startTime){
+        // toast.error("End time should be greater than start time");
+        // alert('endtime is should be greater than start time');
+        return false;
+      }
+      return !room.timeSlots.some(ts =>
+        ts.date === new Date().toISOString().slice(0, 10) &&
+        ts.slots.some(slot => slot.time >= startTime && slot.time <= endTime && !slot.booked)
+      );
+    }
+    return room.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (<>
     <ToastContainer />

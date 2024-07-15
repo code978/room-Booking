@@ -5,6 +5,8 @@ import './RoomSlots.css'; // Add this line to include CSS for styling
 import { toast } from 'react-toastify';
 import Calendar from './renderCalender';
 import TimeSlots from './renderTimeSlots';
+import io from 'socket.io-client';
+import  socketUrl  from './../../constants/urls';
 
 const RoomSlots = () => {
     const { id } = useParams();
@@ -38,6 +40,8 @@ const RoomSlots = () => {
     if (!roomDetails) {
         return <p>Room details not found</p>;
     }
+
+    // const socket = io(socketUrl);
 
     return (
         <div className="room-list">

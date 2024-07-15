@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import io from 'socket.io-client';
 import handleSlotBook from '../helpers/handleSlotBook';
 import validTimes from '../data/validTime';
+// import  socketUrl  from './../../constants/urls';
 
 const TimeSlots = ({ selectedDate, roomDetails, tsLoad, setTsLoad }) => {
     if (!selectedDate) return null;
-    console.log(selectedDate)
 
     const timeSlots = roomDetails?.timeSlots.find(slot => slot.date === selectedDate)?.slots || [];
-    console.log(timeSlots)
     const slots = [];
 
     validTimes.forEach(timeString => {
@@ -21,6 +21,31 @@ const TimeSlots = ({ selectedDate, roomDetails, tsLoad, setTsLoad }) => {
         );
     });
 
+    // useEffect(() => {
+    //     const socket = io(socketUrl);
+    //     socket.on('bookRoom', async (data) => {
+    //       try {
+    //         const room = await room.findOne({ _id: data.roomId });
+    //         if (room) {
+    //           const slot = room.timeSlots.find(ts => ts.date === data.date);
+    //           if (slot) {
+    //             slot.slots.forEach(slot => {
+    //               if (slot.time === data.time) {
+    //                 slot.booked = true;
+    //               }
+    //             });
+    //           }
+    //         }
+    //       } catch (error) {
+    //         console.log(error);
+    //         socket.emit('bookingFailed');
+    //       }
+    //     });
+    //     return () => {
+    //         socket.disconnect();
+    //     };
+    // }, []);
+
     return (
         <div className="time-slots">
             {slots}
@@ -29,3 +54,4 @@ const TimeSlots = ({ selectedDate, roomDetails, tsLoad, setTsLoad }) => {
 };
 
 export default TimeSlots;
+
